@@ -1,0 +1,7 @@
+# ninja log v7
+28	615	8139208074529294	build.ninja	899d1481335ebcec
+28	615	8139208074529294	D:/Rizky Ramadhan/Projek/Bahasa C++/SFML_ImGui_Course/build/cmake_install.cmake	899d1481335ebcec
+39	3097	8139208075339773	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
+3099	3429	8139208105920605	GameEngine.exe	fb3fe4718eb08d10
+19	1059	8139211931796487	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
+1059	1179	8139211942169855	GameEngine.exe	fb3fe4718eb08d10
