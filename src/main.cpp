@@ -9,9 +9,18 @@ int main() {
     Window.setFramerateLimit(60);
 
     sf::Color Color = sf::Color::Blue;
-    sf::RectangleShape Kotak(sf::Vector2f(50.0f, 50.0f));
-    Kotak.setFillColor(sf::Color::Black);
-    Kotak.setPosition(sf::Vector2f(100.0f, 100.0f));
+    sf::RectangleShape Rumah(sf::Vector2f(100.0f, 100.0f));
+    Rumah.setPosition(sf::Vector2f(200.0f, 200.0f));
+    Rumah.setFillColor(sf::Color::Black);
+
+    sf::Texture texturePlayer;
+    if(!texturePlayer.loadFromFile("Tank2-BirdView.png")){
+        std::cout << "Failed to load texture" << std::endl;
+        return -1;
+    }
+    sf::Sprite spritePlayer(texturePlayer);
+    spritePlayer.setPosition(sf::Vector2f(50.0f, 50.0f));
+    spritePlayer.setScale(sf::Vector2f(0.1f, 0.1f));
 
     while(Window.isOpen()){
 
@@ -34,18 +43,19 @@ int main() {
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
-            Kotak.move(sf::Vector2f(0.0f, -10.0f));
+            spritePlayer.move(sf::Vector2f(0.0f, -10.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)){
-            Kotak.move(sf::Vector2f(0.0f, 10.0f));
+            spritePlayer.move(sf::Vector2f(0.0f, 10.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
-            Kotak.move(sf::Vector2f(-10.0f, 0.0f));
+            spritePlayer.move(sf::Vector2f(-10.0f, 0.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
-            Kotak.move(sf::Vector2f(10.0f, 0.0f));
+            spritePlayer.move(sf::Vector2f(10.0f, 0.0f));
         }
 
         Window.clear(Color);
 
-        Window.draw(Kotak);
+        Window.draw(spritePlayer);
+        Window.draw(Rumah);
 
         Window.display();
     }
