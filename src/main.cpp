@@ -8,13 +8,10 @@ int main() {
     sf::RenderWindow Window(sf::VideoMode(sf::Vector2u(1280,720)), "Engine Game Saya");
     Window.setFramerateLimit(60);
 
-    float kotakX = 100.0f;
-    float kotakY = 100.0f;
-
     sf::Color Color = sf::Color::Blue;
     sf::RectangleShape Kotak(sf::Vector2f(50.0f, 50.0f));
     Kotak.setFillColor(sf::Color::Black);
-    Kotak.setPosition(sf::Vector2f(kotakX, kotakY));
+    Kotak.setPosition(sf::Vector2f(100.0f, 100.0f));
 
     while(Window.isOpen()){
 
@@ -32,28 +29,18 @@ int main() {
                     Color = sf::Color::Green;
                 }else if(keyEvent->code == sf::Keyboard::Key::B){
                     Color = sf::Color::Blue;
-                }else if(keyEvent->code == sf::Keyboard::Key::Q){
-                    std::cout << "Quit Game Saya" << std::endl;
                 }
             }
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R)){
-            std::cout << "RRRRRRRRRRRRRR" << std::endl;
-        }
-
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
-            kotakY -= 10.0f;
-            Kotak.setPosition(sf::Vector2f(kotakX, kotakY));
+            Kotak.move(sf::Vector2f(0.0f, -10.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)){
-            kotakY += 10.0f;
-            Kotak.setPosition(sf::Vector2f(kotakX, kotakY));
+            Kotak.move(sf::Vector2f(0.0f, 10.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
-            kotakX -= 10.0f;
-            Kotak.setPosition(sf::Vector2f(kotakX, kotakY));
+            Kotak.move(sf::Vector2f(-10.0f, 0.0f));
         }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
-            kotakX += 10.0f;
-            Kotak.setPosition(sf::Vector2f(kotakX, kotakY));
+            Kotak.move(sf::Vector2f(10.0f, 0.0f));
         }
 
         Window.clear(Color);

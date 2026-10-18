@@ -4,6 +4,6 @@ project(GameEngine)
 
 find_package(SFML 3.0 COMPONENTS Graphics Window System REQUIRED)
 
-add_executable(GameEngine main.cpp)
+add_executable(GameEngine src/main.cpp)
 
 target_link_libraries(GameEngine SFML::Graphics SFML::Window SFML::System)

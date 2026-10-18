@@ -44,10 +44,10 @@ cmake_ninja_workdir = D$:/Rizky$ Ramadhan/Projek/Bahasa$ C++/SFML_ImGui_Course/b
 
 build cmake_object_order_depends_target_GameEngine: phony || .
 
-build CMakeFiles/GameEngine.dir/main.cpp.obj: CXX_COMPILER__GameEngine_unscanned_ D$:/Rizky$ Ramadhan/Projek/Bahasa$ C++/SFML_ImGui_Course/main.cpp || cmake_object_order_depends_target_GameEngine
-  DEP_FILE = CMakeFiles\GameEngine.dir\main.cpp.obj.d
+build CMakeFiles/GameEngine.dir/src/main.cpp.obj: CXX_COMPILER__GameEngine_unscanned_ D$:/Rizky$ Ramadhan/Projek/Bahasa$ C++/SFML_ImGui_Course/src/main.cpp || cmake_object_order_depends_target_GameEngine
+  DEP_FILE = CMakeFiles\GameEngine.dir\src\main.cpp.obj.d
   OBJECT_DIR = CMakeFiles\GameEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\GameEngine.dir
 
 
@@ -58,7 +58,7 @@ build CMakeFiles/GameEngine.dir/main.cpp.obj: CXX_COMPILER__GameEngine_unscanned
 #############################################
 # Link the executable GameEngine.exe
 
-build GameEngine.exe: CXX_EXECUTABLE_LINKER__GameEngine_ CMakeFiles/GameEngine.dir/main.cpp.obj | C$:/msys64/ucrt64/lib/libsfml-graphics.dll.a C$:/msys64/ucrt64/lib/libsfml-window.dll.a C$:/msys64/ucrt64/lib/libsfml-system.dll.a
+build GameEngine.exe: CXX_EXECUTABLE_LINKER__GameEngine_ CMakeFiles/GameEngine.dir/src/main.cpp.obj | C$:/msys64/ucrt64/lib/libsfml-graphics.dll.a C$:/msys64/ucrt64/lib/libsfml-window.dll.a C$:/msys64/ucrt64/lib/libsfml-system.dll.a
   LINK_LIBRARIES = C:/msys64/ucrt64/lib/libsfml-graphics.dll.a  C:/msys64/ucrt64/lib/libsfml-window.dll.a  C:/msys64/ucrt64/lib/libsfml-system.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   POST_BUILD = cd .

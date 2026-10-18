@@ -1,27 +1,13 @@
 # ninja log v7
-28	615	8139208074529294	build.ninja	899d1481335ebcec
-28	615	8139208074529294	D:/Rizky Ramadhan/Projek/Bahasa C++/SFML_ImGui_Course/build/cmake_install.cmake	899d1481335ebcec
-39	3097	8139208075339773	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-3099	3429	8139208105920605	GameEngine.exe	fb3fe4718eb08d10
-19	1059	8139211931796487	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1059	1179	8139211942169855	GameEngine.exe	fb3fe4718eb08d10
-57	3916	8139369935231165	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-3916	4373	8139369973829598	GameEngine.exe	fb3fe4718eb08d10
-20	1101	8139370203119698	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1102	1218	8139370213939924	GameEngine.exe	fb3fe4718eb08d10
-21	1078	8139370683756864	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1078	1204	8139370694334670	GameEngine.exe	fb3fe4718eb08d10
-19	1158	8139377813705230	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1159	1295	8139377825097402	GameEngine.exe	fb3fe4718eb08d10
-20	1068	8139377993958272	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1069	1185	8139378004421565	GameEngine.exe	fb3fe4718eb08d10
-6	1137	8139384439974117	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1137	1252	8139384451302168	GameEngine.exe	fb3fe4718eb08d10
-80	3233	8139453248569680	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-3233	3587	8139453280098458	GameEngine.exe	fb3fe4718eb08d10
-23	1156	8139454648395558	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1156	1268	8139454659727155	GameEngine.exe	fb3fe4718eb08d10
-19	1135	8139455203209016	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
-1136	1251	8139455214394248	GameEngine.exe	fb3fe4718eb08d10
+2	152	8139462532190023	build.ninja	899d1481335ebcec
+2	152	8139462532190023	D:/Rizky Ramadhan/Projek/Bahasa C++/SFML_ImGui_Course/build/cmake_install.cmake	899d1481335ebcec
 20	1119	8139455623452774	CMakeFiles/GameEngine.dir/main.cpp.obj	447582bc17f14238
 1120	1256	8139455634464294	GameEngine.exe	fb3fe4718eb08d10
+27	1212	8139458944919199	CMakeFiles/GameEngine.dir/src/main.cpp.obj	94cbde1206ffb4eb
+1	162	8139462532190023	build.ninja	899d1481335ebcec
+1	162	8139462532190023	D:/Rizky Ramadhan/Projek/Bahasa C++/SFML_ImGui_Course/build/cmake_install.cmake	899d1481335ebcec
+6	109	8139462629203279	GameEngine.exe	b32011c638bbc98
+18	1378	8139466283032594	CMakeFiles/GameEngine.dir/src/main.cpp.obj	94cbde1206ffb4eb
+1378	1518	8139466296559163	GameEngine.exe	b32011c638bbc98
+48	1361	8139468083319231	CMakeFiles/GameEngine.dir/src/main.cpp.obj	94cbde1206ffb4eb
+1362	1506	8139468096469889	GameEngine.exe	b32011c638bbc98
