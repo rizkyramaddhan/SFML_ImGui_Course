@@ -3,6 +3,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <iostream>
 #include <string>
+#include <optional>
 
 // Inisialisasi Class Object
 
@@ -17,7 +18,7 @@ class gameEngine {
         sf::RectangleShape kotak;   
         
         std::optional<sf::Texture> textureTank;
-        std::optional<sf::Sprite> spriteTank;
+        std::vector<sf::Sprite> vectorSpriteTank;
 
     // End Variabels or Properties Class Object
 
@@ -37,9 +38,11 @@ class gameEngine {
                 std::cout << "Error Load Texture" << std::endl;
             }
 
-            spriteTank.emplace(*textureTank);
-            spriteTank->setScale(sf::Vector2f(0.2f, 0.2f));
-            spriteTank->setPosition(sf::Vector2f(200.0f, 200.0f));
+            for(int i = 0; i < 5; i++){
+                vectorSpriteTank.emplace_back(* textureTank);
+                vectorSpriteTank.back().setScale(sf::Vector2f(0.2f, 0.2f));
+                vectorSpriteTank.back().setPosition(sf::Vector2f(i * 100.0f, 0.2f));
+            }
             
         }
 
@@ -86,19 +89,20 @@ class gameEngine {
                 kotak.move(sf::Vector2f(5.0f, 0.0f));
             }
             // End Kotak Move
-
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
-                spriteTank->move(sf::Vector2f(0.0f, -5.0f));
-            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
-                spriteTank->move(sf::Vector2f(0.0f, 5.0f));
-            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
-                spriteTank->move(sf::Vector2f(-5.0f, 0.0f));
-            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
-                spriteTank->move(sf::Vector2f(5.0f, 0.0f));
+            for(auto & tank : vectorSpriteTank){
+                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
+                tank.move(sf::Vector2f(0.0f, -5.0f));
+                }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+                {
+                    tank.move(sf::Vector2f(0.0f, 5.0f));
+                }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
+                    tank.move(sf::Vector2f(-5.0f, 0.0f));
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
+                    tank.move(sf::Vector2f(5.0f, 0.0f));
+                }
             }
-
-            
+           
 
         }
 
@@ -106,7 +110,10 @@ class gameEngine {
             window.clear(ColorBackground);
 
             window.draw(kotak);
-            window.draw(*spriteTank);
+            for(const auto & tank : vectorSpriteTank){
+                window.draw(tank);
+                
+            }
 
             window.display();
         }
