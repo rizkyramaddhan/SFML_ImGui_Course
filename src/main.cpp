@@ -2,78 +2,120 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <iostream>
+#include <string>
 
-int main() {
+// Inisialisasi Class Object
 
-    // Start Window Game
-    unsigned int WindowWidth = 1280;
-    unsigned int WindowHeight = 720; 
-    sf::RenderWindow Window(sf::VideoMode(sf::Vector2u(WindowWidth,WindowHeight)), "Engine Game Saya");
-    Window.setFramerateLimit(60);
-    // End Window Game
+class gameEngine {
+    // Start Variabels or Properties Class Object
+    private :
+        sf::RenderWindow window;
+        sf::Color ColorBackground;
+        unsigned int windowWidth;
+        unsigned int windowHeight;
+        std::string titleWindow;
+        sf::RectangleShape kotak;   
+        
+        std::optional<sf::Texture> textureTank;
+        std::optional<sf::Sprite> spriteTank;
 
-    // Start Object Shape
-    sf::Color Color = sf::Color::Blue;
-    sf::RectangleShape Rumah(sf::Vector2f(100.0f, 100.0f));
-    Rumah.setPosition(sf::Vector2f(200.0f, 200.0f));
-    Rumah.setFillColor(sf::Color::Black);
-    // End Object Shape
+    // End Variabels or Properties Class Object
 
-    // Start Texture Object
-    sf::Texture texturePlayer;
-    if(!texturePlayer.loadFromFile("Tank2-BirdView.png")){
-        std::cout << "Failed to load texture" << std::endl;
-        return -1;
-    }
-    // texturePlayer.setSmooth(true);
-    sf::Sprite spritePlayer(texturePlayer);
-    spritePlayer.setPosition(sf::Vector2f(50.0f, 50.0f));
-    spritePlayer.setScale(sf::Vector2f(0.5f, 0.5f));
-    
-    // End Texture Object
+    // Start construktor and method public class object
+    public :
+        gameEngine(unsigned int windowWidth, unsigned int windowHeight, std::string titleWindow) : window(sf::VideoMode(sf::Vector2u(windowWidth, windowHeight)), titleWindow)
+        {
+            window.setFramerateLimit(60);
+            ColorBackground = sf::Color::Black;
 
-    // Start Main Loop
-    while(Window.isOpen()){
+            kotak.setSize(sf::Vector2f(100.0f, 100.0f));
+            kotak.setPosition(sf::Vector2f(100.0f, 100.0f));
+            kotak.setFillColor(sf::Color::White);
 
-        // Start Event Update 
-        while(const std::optional<sf::Event> eventGame = Window.pollEvent()){
-            if(eventGame->is<sf::Event::Closed>()){
-                Window.close();
+            textureTank.emplace();
+            if(!textureTank->loadFromFile("Tank2-BirdView.png")){
+                std::cout << "Error Load Texture" << std::endl;
             }
 
-            if(const auto * keyEvent = eventGame->getIf<sf::Event::KeyPressed>()){
-                if(keyEvent->code == sf::Keyboard::Key::Escape){
-                    Window.close();
-                }else if(keyEvent->code == sf::Keyboard::Key::R){
-                    Color = sf::Color::Red;
-                }else if(keyEvent->code == sf::Keyboard::Key::G){
-                    Color = sf::Color::Green;
-                }else if(keyEvent->code == sf::Keyboard::Key::B){
-                    Color = sf::Color::Blue;
+            spriteTank.emplace(*textureTank);
+            spriteTank->setScale(sf::Vector2f(0.2f, 0.2f));
+            spriteTank->setPosition(sf::Vector2f(200.0f, 200.0f));
+            
+        }
+
+        void run(){
+            while(window.isOpen()){
+                eventUpdate();
+                logicUpdate();
+                renderUpdate();
+            }
+        }
+
+    // End construktor and method public class object
+
+    // start method private class object
+    private :
+        void eventUpdate(){
+            while(const std::optional<sf::Event> events = window.pollEvent()){
+                if(events->is<sf::Event::Closed>()){
+                    window.close();
                 }
+
+                if(const auto * keyPressed = events->getIf<sf::Event::KeyPressed>()){
+                    if(keyPressed->code == sf::Keyboard::Key::R){
+                        ColorBackground = sf::Color::Red;
+                    }else if(keyPressed->code == sf::Keyboard::Key::G){
+                        ColorBackground = sf::Color::Green;
+                    }
+                }
+                
             }
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
-            spritePlayer.move(sf::Vector2f(0.0f, -0.1f));
-        }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)){
-            spritePlayer.move(sf::Vector2f(0.0f, 0.1f));
-        }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
-            spritePlayer.move(sf::Vector2f(-0.1f, 0.0f));
-        }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
-            spritePlayer.move(sf::Vector2f(0.1f, 0.0f));
+        void logicUpdate(){
+            // Start Kotak Move
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
+                kotak.move(sf::Vector2f(0.0f, -5.0f));
+            }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+            {
+                kotak.move(sf::Vector2f(0.0f, 5.0f));
+            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
+                kotak.move(sf::Vector2f(-5.0f, 0.0f));
+            }
+            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
+                kotak.move(sf::Vector2f(5.0f, 0.0f));
+            }
+            // End Kotak Move
+
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
+                spriteTank->move(sf::Vector2f(0.0f, -5.0f));
+            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
+                spriteTank->move(sf::Vector2f(0.0f, 5.0f));
+            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)){
+                spriteTank->move(sf::Vector2f(-5.0f, 0.0f));
+            }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)){
+                spriteTank->move(sf::Vector2f(5.0f, 0.0f));
+            }
+
+            
+
         }
-        // End Event Update
 
-        // Start Draw Update
-        Window.clear(Color);
-        Window.draw(spritePlayer);
-        Window.draw(Rumah);
+        void renderUpdate(){
+            window.clear(ColorBackground);
 
-        Window.display();
-        // End Draw Update
-    }
-    // End Main Loop
+            window.draw(kotak);
+            window.draw(*spriteTank);
 
+            window.display();
+        }
+    // end method private class object
+};
+
+
+int main(){
+    gameEngine game(800,600, "Game Engine v0.3");
+    game.run();
     return 0;
 }
